@@ -1,0 +1,43 @@
+import pymysql.cursors
+from kivy.uix.utton import Button
+class KivyButton(App):
+    def build(self):
+        return Button(text='Ввести данные',
+        pos=0,100,size_hint=(.25, .18))
+ 
+# Подключиться к базе данных.
+
+
+connection = pymysql.connect(host='127.0.0.1',
+                             user='root',
+                             password='root',                             
+                             db='otdel_kadrov',
+                             charset='utf8',
+                             cursorclass=pymysql.cursors.DictCursor)
+ 
+print ("connect successful!!")
+    
+'''try:
+        cursor = connection.cursor()
+        
+        newpass=str(input('Введите паспорт: '))
+        fio=str(input('Введите ФИО: '))
+        birthday=str(input('Введите дату рождения: '))
+        sp=str(input('Введите семейное положение: '))
+        invalid=str(input('Введите инвалидность: '))
+        doldjnost=str(input('Введите должность: '))
+        dateprioma=str(input('Введите дату приёма: '))
+        adress=str(input('Введите адрес: '))
+        dom=str(input('Введите дом: '))
+        telefon=str(input('Введите телефон: '))
+        
+        # Выполнить sql и передать 3 параметра.
+        cursor.execute('''insert into sotrudniki (newpass,fio,birthday,sp,invalid,
+        doldjnost,dateprioma,adress,dom,telefon) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)''',(newpass,fio,birthday,sp,invalid,doldjnost,dateprioma,adress,dom,telefon))
+        
+        connection.commit() 
+    
+    finally: 
+        connection.close()
+'''
+KivyButton().run()
